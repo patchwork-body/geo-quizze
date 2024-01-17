@@ -1,0 +1,21 @@
+{{ define "Auth" }}
+<div
+  id="main"
+  class="flex flex-col gap-4 mx-auto max-w-[20dvw] mt-20 shadow-lg rounded-xl p-8 bg-white"
+>
+  <picture>
+    <source srcset="/assets/Logo.png" media="(min-width: 650px)" />
+    <source srcset="/assets/Logo.png" media="(min-width: 465px)" />
+    <img
+      class="max-w-full shadow-md rounded-2xl"
+      src="/assets/Logo.png"
+      alt="Logo"
+    />
+  </picture>
+
+  <div class="flex items-center justify-between gap-4">
+    <button hx-post="/quiz" class="flex-1">Play single!</button>
+    <button class="flex-1">Play with friends!</button>
+  </div>
+</div>
+{{ end }}

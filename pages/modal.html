@@ -1,0 +1,20 @@
+<div
+  id="modal"
+  class="group fixed inset-0 bg-white/50 z-100 flex flex-col items-center animate-fade-in-fast"
+  _="on closeModal add .animate-fade-out-fast then wait for animationend then remove me"
+>
+  <div
+    class="absolute -z-1 inset-0 group-[.animate-fade-out]:animate-zoom-out-fast"
+    _="on click trigger closeModal"
+  ></div>
+  <div
+    class="mt-[10vh] w-[80%] max-w-[280px] border border-gray-900 rounded-lg shadow-lg bg-white p-8 animate-zoom-in-fast"
+  >
+    <h1>
+      {{ if .IsWinner }} Congratulation! You're Won! {{ else }} Sorry, but
+      you're loose this round {{ end }}
+    </h1>
+
+    <button _="on click trigger closeModal">Next round</button>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@unocss/reset/normalize.min.css"
+    />
+    <style>
+      .bg-image {
+        background-image: url("/assets/bg.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      [un-cloak] {
+        display: none;
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes fadeOut {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      @keyframes zoomIn {
+        0% {
+          transform: scale(0);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      @keyframes zoomOut {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(0);
+        }
+      }
+    </style>
+    <script>
+      window.__unocss = {
+        rules: [
+          ["animate-fade-in-fast", { animation: "fadeIn .2s" }],
+          ["animate-fade-out-fast", { animation: "fadeOut .2s" }],
+          ["animate-zoom-in-fast", { animation: "zoomIn .2s" }],
+          ["animate-zoom-out-fast", { animation: "zoomOut .2s" }],
+        ],
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+    <title>Geo quizze</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  </head>
+  <body un-cloak class="m-0">
+    <div
+      id="video-container"
+      style="
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 10;
+      "
+    >
+      <video
+        autoplay
+        loop
+        muted
+        style="object-fit: cover; width: 100%; height: 100%"
+      >
+        <source src="/assets/bg.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div
+      id="main"
+      class="flex flex-col min-h-screen absolute top-0 z-10 left-1/2 -translate-x-1/2"
+    >
+      <!-- Authorization -->
+      {{ if .Unauthorized }} {{ template "Auth" }} {{ else }} {{ template "Quiz"
+      }} {{ end }}
+    </div>
+  </body>
+</html>

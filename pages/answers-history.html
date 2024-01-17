@@ -1,0 +1,12 @@
+{{ range .UserAnswers }}
+<li>
+  {{ .Answer }} {{ if .IsCorrect }}
+  <span class="text-green-500">✅</span>
+  <button hx-get="/modal" hx-target="body" hx-swap="beforeend">
+    Open a Modal
+  </button>
+  {{ else }}
+  <span class="text-red-500">❌</span>
+  {{ end }}
+</li>
+{{ end }}

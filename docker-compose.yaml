@@ -1,0 +1,13 @@
+version: "3"
+services:
+  air:
+    image: cosmtrek/air
+    volumes:
+      - ./:/go/src/patchwork-body/geo-quizze
+    working_dir: /go/src/patchwork-body/geo-quizze
+    ports:
+      - "8080:8080"
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"

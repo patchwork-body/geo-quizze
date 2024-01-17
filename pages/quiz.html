@@ -1,0 +1,31 @@
+{{ define "Quiz" }}
+<form
+  hx-patch="/quiz"
+  hx-target="#answer-history"
+  hx-swap="beforeend"
+  class="flex flex-col gap-4 mx-auto max-w-[20dvw] mt-20 shadow-lg rounded-xl p-8 bg-white"
+>
+  <picture>
+    <source srcset="{{ .ImageUrl }}" media="(min-width: 650px)" />
+    <source srcset="{{ .ImageUrl }}" media="(min-width: 465px)" />
+    <img
+      class="max-w-full shadow-md rounded-2xl"
+      src="{{ .ImageUrl }}"
+      alt="Question image"
+    />
+  </picture>
+
+  <p>{{ .Question }}</p>
+
+  <ul id="answer-history"></ul>
+
+  <input name="question" type="hidden" value="{{ .Question }}" />
+  <input name="answer" type="text" placeholder="Answer" />
+  <button
+    type="submit"
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+  >
+    Check
+  </button>
+</form>
+{{ end }}
